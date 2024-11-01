@@ -1,0 +1,15 @@
+# All for virtual environment
+*env
+
+# Python cache folders
+*pycache*
+
+# Logs folder
+/logs
+
+# database template
+database.db
+
+playground.py
+
+.vscode

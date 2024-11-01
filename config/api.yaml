@@ -1,0 +1,6 @@
+title: FastApi template api
+description: Template docs for api
+version: v1.0.0
+openapi_tags:
+    - name: task
+      description: "40 let"
