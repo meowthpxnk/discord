@@ -12,7 +12,7 @@ class APIRouter(APIRouter):
     def __init__(
         self,
         tags: list[str] = None,
-        prefix: str = None,
+        prefix: str = "",
         dependencies: Sequence[Depends] = None,
     ) -> None:
         super().__init__(
