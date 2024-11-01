@@ -20,7 +20,7 @@ class APIConfigModel(BaseModel):
 
 
 class APIConfig:
-    def __init__(self):
+    def __init__(self) -> None:
         data = read_file(API_CONFIG_PATH)
         data = yaml.safe_load(data)
         data = APIConfigModel.model_validate(data)
@@ -28,5 +28,5 @@ class APIConfig:
         self.config: APIConfigModel = data
 
     @property
-    def dict(self):
+    def dict(self) -> dict:
         return self.config.model_dump()

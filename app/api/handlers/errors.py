@@ -9,7 +9,7 @@ from app import api, logger
 
 
 class ScopeHelper:
-    def __init__(self, scope: Scope):
+    def __init__(self, scope: Scope) -> None:
         self.addr = get_client_addr(scope)
         self.path = get_path_with_query_string(scope)
         self.method = scope["method"]
@@ -20,7 +20,9 @@ class ScopeHelper:
 
 
 @api.exception_handler(Exception)
-async def exception_handler(request: Request, exc):
+async def exception_handler(
+    request: Request, exc: BaseException
+) -> JSONResponse:
     error = str(exc)
 
     scope = ScopeHelper(request.scope)

@@ -12,7 +12,7 @@ operator_map = {
 
 
 class ExpressionHelper:
-    def __init__(self, expression: BinaryExpression) -> None:
+    def __init__(self, expression: BinaryExpression[any]) -> None:
         self.expression: BinaryExpression = expression
 
     def __str__(self) -> str:

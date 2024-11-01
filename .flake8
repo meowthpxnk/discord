@@ -1,4 +1,4 @@
 [flake8]
 exclude = .git,__pycache__,env, __init__.py, migration, root.py, __root.py, README.md
-extend-ignore = E722
+extend-ignore = E722, ANN101, ANN102, ANN002, ANN003
 max-line-length = 79

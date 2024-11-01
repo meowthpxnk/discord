@@ -16,7 +16,7 @@ class CorsConfigModel(BaseModel):
 class CorsConfig:
     def __init__(
         self,
-    ):
+    ) -> None:
         data = read_file(CORS_CONFIG_PATH)
         data = yaml.safe_load(data)
         data = CorsConfigModel.model_validate(data)
@@ -24,5 +24,5 @@ class CorsConfig:
         self.config: CorsConfigModel = data
 
     @property
-    def dict(self):
+    def dict(self) -> dict:
         return self.config.model_dump()

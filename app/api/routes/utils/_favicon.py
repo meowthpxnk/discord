@@ -5,5 +5,5 @@ from app.constants import FAVICON_PATH
 
 
 @api.get("/favicon.ico", include_in_schema=False)
-def favicon():
+def favicon() -> FileResponse:
     return FileResponse(FAVICON_PATH)

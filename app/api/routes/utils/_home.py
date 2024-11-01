@@ -6,7 +6,7 @@ from app.utils.path import read_file
 
 
 @api.get("/", include_in_schema=False)
-def home():
+def home() -> HTMLResponse:
     data = read_file(PUBLIC_HTML_PATH)
     data = data.replace("{{TITLE}}", base_config.config.title)
     data = data.replace("{{DESCRIPTION}}", base_config.config.description)

@@ -34,7 +34,7 @@ class BaseRedisService(ABC):
             raise NotFoundInRedis(self.__class__.__name__, id)
         return value
 
-    def set(self, id: str, value, ex=None) -> None:
+    def set(self, id: str, value: str, ex: int = None) -> None:
         name = self._current_name(id)
         self.redis_client.set(name, value, ex)
 

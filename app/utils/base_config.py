@@ -11,7 +11,7 @@ class BaseConfigModel(BaseModel):
 
 
 class BaseConfig:
-    def __init__(self):
+    def __init__(self) -> None:
         data = read_file(BASE_CONFIG_PATH)
         data = yaml.safe_load(data)
         data = BaseConfigModel.model_validate(data)
@@ -19,5 +19,5 @@ class BaseConfig:
         self.config: BaseConfigModel = data
 
     @property
-    def dict(self):
+    def dict(self) -> dict:
         return self.config.model_dump()
