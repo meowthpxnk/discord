@@ -1,9 +1,7 @@
-from typing import Type, TypeVar
-
 from pydantic import BaseModel
 from sqlalchemy import select
-from sqlalchemy.ext.declarative import declarative_base, declared_attr
-from sqlalchemy.orm import Mapped
+from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.orm import DeclarativeBase, Mapped
 from sqlalchemy.sql._typing import _ColumnExpressionArgument
 
 from app import logger
@@ -12,12 +10,7 @@ from app.utils.camel_to_snake import camel_to_snake
 from ..errors import AlreadyExistsInDB, NotFoundInDB
 
 
-BaseCL = declarative_base()
-
-T = TypeVar("T", bound="Base")
-
-
-class Base(BaseCL):
+class Base(DeclarativeBase):
     id: Mapped[int]
 
     @declared_attr
@@ -26,10 +19,10 @@ class Base(BaseCL):
 
     @classmethod
     def select_where(
-        cls: Type[T],
+        cls,
         *whereclause: _ColumnExpressionArgument[bool],
         first: bool = False,
-    ) -> T:
+    ):  # noqa: ANN206
         from .. import session
 
         stmt = select(cls).where(*whereclause)
