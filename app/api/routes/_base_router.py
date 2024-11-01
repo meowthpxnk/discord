@@ -1,6 +1,6 @@
 from typing import Sequence
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from pydantic import BaseModel
 
 
@@ -19,5 +19,5 @@ class APIRouter(APIRouter):
             prefix=prefix,
             tags=tags,
             dependencies=dependencies,
-            responses={400: {"model": ErrorReason}},
+            responses={status.HTTP_400_BAD_REQUEST: {"model": ErrorReason}},
         )
