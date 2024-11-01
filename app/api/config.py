@@ -28,5 +28,5 @@ class APIConfig:
         self.config: APIConfigModel = data
 
     @property
-    def dict(self) -> dict:
+    def dict(self):
         return self.config.model_dump()
