@@ -57,7 +57,7 @@ config = Config(
 server = Server(config)
 
 
-# >> API add logs websocket
+# >> API add logs websocket initialisation
 from MeowthLogger.utilities.fastapi.views import get_log_stream_views_router
 
 router = get_log_stream_views_router(logger)
