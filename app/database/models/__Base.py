@@ -11,7 +11,7 @@ from ..errors import AlreadyExistsInDB, NotFoundInDB
 
 
 class Base(DeclarativeBase):
-    id: Mapped[int]
+    # id: Mapped[int]
 
     @declared_attr
     def __tablename__(cls) -> str:
@@ -58,4 +58,8 @@ class Base(DeclarativeBase):
                 pass
 
     def __repr__(self) -> str:
-        return f"<{self.__class__.__name__} ID: {self.id}>"
+        try:
+            id = self.id
+        except:
+            id = None
+        return f"<{self.__class__.__name__} ID: {id}>"

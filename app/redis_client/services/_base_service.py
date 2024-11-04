@@ -25,6 +25,8 @@ class BaseRedisService(ABC):
 
     @classmethod
     def _current_name(cls, id: str) -> str:
+        if isinstance(id, bytes):
+            id = id.decode()
         return cls._get_pattern() + id
 
     def get(self, id: str) -> bytes:

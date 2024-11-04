@@ -13,3 +13,6 @@ database.db
 playground.py
 
 .vscode
+
+jwt_keys
+*.pem

@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import Optional, Sequence, Union
 
 from fastapi import APIRouter, Depends, status
 from pydantic import BaseModel
@@ -14,10 +14,15 @@ class APIRouter(APIRouter):
         tags: list[str] = None,
         prefix: str = "",
         dependencies: Sequence[Depends] = None,
+        responses: Optional[dict[Union[int, str], dict[str, any]]] = None,
     ) -> None:
+        base_responses = {status.HTTP_400_BAD_REQUEST: {"model": ErrorReason}}
+        if responses:
+            base_responses.update(responses)
+
         super().__init__(
             prefix=prefix,
             tags=tags,
             dependencies=dependencies,
-            responses={status.HTTP_400_BAD_REQUEST: {"model": ErrorReason}},
+            responses=base_responses,
         )

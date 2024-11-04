@@ -1,3 +1,6 @@
-title: FastApi template api
-description: Template docs for api
-version: v1.0.0
+title: Discord application api
+description: Api for usage custom discord.
+version: 0.0.1
+openapi_tags:
+    - name: Auth
+      description: Authorisation methods.

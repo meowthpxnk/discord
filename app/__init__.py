@@ -28,6 +28,11 @@ logger = Logger(
     stream=StreamManager(loop),
 )
 
+# >> IDEncryptor initialisation
+from .utils.IDEncryptor import IDEncryptor
+
+id_encryptor = IDEncryptor(settings.secrets.id_encryptor_secret)
+
 
 # >> Database initialisation
 from . import database as db
@@ -62,6 +67,11 @@ from MeowthLogger.utilities.fastapi.views import get_log_stream_views_router
 
 router = get_log_stream_views_router(logger)
 api.include_router(router)
+
+# >> Auth JWT service initialisation
+from .auth import AuthJWTService
+
+auth_jwt_service = AuthJWTService()
 
 
 # >> API routes initialisation
