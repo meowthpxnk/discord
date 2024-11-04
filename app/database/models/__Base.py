@@ -40,7 +40,7 @@ class Base(DeclarativeBase):
     @classmethod
     def exists(cls, *whereclause: _ColumnExpressionArgument[bool]) -> None:
         try:
-            cls.select_where(*whereclause)
+            cls.select_where(*whereclause, first=True)
         except NotFoundInDB:
             pass
         else:
